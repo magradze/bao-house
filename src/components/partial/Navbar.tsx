@@ -1,59 +1,37 @@
 "use client"
 import React from 'react';
 import {Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem} from "@nextui-org/react";
-import {useUser, currentUser, UserButton} from "@clerk/nextjs";
-import {ThemeSwitcher} from "@/components/shared/ThemeSwitcher";
+
+const navBarItems = [
+    {
+        name: "歡迎 Accueil",
+        href: "#",
+    },
+    {
+        name: "選單 Menu",
+        href: "#",
+        isActive: true,
+    },
+    {
+        name: "接觸 Contact",
+        href: "#",
+    },
+];
 
 const NavBar = () => {
-    const {user, isLoaded, isSignedIn} = useUser();
     return (
-        <Navbar shouldHideOnScroll>
-            <NavbarBrand>
-                <Link href="/" className="font-bold text-inherit">Bao House</Link>
-            </NavbarBrand>
-            <NavbarContent className="hidden sm:flex gap-4" justify="center">
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Features
-                    </Link>
-                </NavbarItem>
-                <NavbarItem isActive>
-                    <Link href="#" aria-current="page">
-                        Customers
-                    </Link>
-                </NavbarItem>
-                <NavbarItem>
-                    <Link color="foreground" href="#">
-                        Integrations
-                    </Link>
-                </NavbarItem>
-            </NavbarContent>
-            <NavbarContent justify="end">
-                <ThemeSwitcher/>
-                {!isLoaded ? (
-                    <NavbarItem>
-                        <Button variant="light">
-                            Loading...
-                        </Button>
+        <Navbar
+            style={{backgroundColor: "#f8d7a5"}}
+            position="static" maxWidth="xl"
+            className="border-b-0 border-secondary-950 bg-transparent z-50 absolute top-0">
+            <NavbarContent className="hidden sm:flex gap-10" justify="center">
+                {navBarItems.map((item, index) => (
+                    <NavbarItem key={index}>
+                        <Link color="primary" href={item.href} className="text-xl font-bold">
+                            {item.name.toUpperCase()}
+                        </Link>
                     </NavbarItem>
-                ) : isSignedIn ? (
-                    <UserButton afterSignOutUrl="/"/>
-                ) : (
-                    <>
-                        <NavbarItem>
-                            <Link href="/sign-up">
-                                Sign Up
-                            </Link>
-                        </NavbarItem>
-                        <NavbarItem className="hidden lg:flex">
-                            <Button variant="solid" color="primary">
-                                <Link href="/sign-in" className="text-white">
-                                    Sign In
-                                </Link>
-                            </Button>
-                        </NavbarItem>
-                    </>
-                )}
+                ))}
             </NavbarContent>
         </Navbar>
     );

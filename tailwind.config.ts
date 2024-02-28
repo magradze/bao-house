@@ -1,95 +1,72 @@
 import type {Config} from "tailwindcss";
 import {nextui} from "@nextui-org/react";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
-    content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-        "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-        extend: {
-            backgroundImage: {
-                "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-                "gradient-conic":
-                    "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-            },
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: "#eb4851",
+          '50': '#fef2f3',
+          '100': '#fde3e4',
+          '200': '#fdcbce',
+          '300': '#faa7ab',
+          '400': '#f5747b',
+          '500': '#eb4851',
+          '600': '#d82d36',
+          '700': '#b52028',
+          '800': '#961e24',
+          '900': '#7d1f24',
+          '950': '#440b0e',
         },
+        secondary:  {
+          DEFAULT: "#656b61",
+          '50': '#f6f7f6',
+          '100': '#e4e5e2',
+          '200': '#c7cac5',
+          '300': '#a3a8a0',
+          '400': '#7f867b',
+          '500': '#656b61',
+          '600': '#4f554c',
+          '700': '#42463f',
+          '800': '#363a35',
+          '900': '#262825',
+          '950': '#191b18',
+        },
+        default: {
+          DEFAULT: "#999999",
+          '50': '#f7f7f7',
+          '100': '#ededed',
+          '200': '#dfdfdf',
+          '300': '#d3d3d3',
+          '400': '#adadad',
+          '500': '#999999',
+          '600': '#888888',
+          '700': '#7b7b7b',
+          '800': '#676767',
+          '900': '#545454',
+          '950': '#363636',
+        }
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
     },
-    darkMode: "class",
-    plugins: [nextui({
-        themes: {
-            "light": {
-                extend: "light",
-                colors: {
-                    background: "#f8d7a4",
-                    foreground: "#EC4C45",
-                    primary: {
-                        100: "#FEE7DA",
-                        200: "#FDCAB5",
-                        300: "#F9A58F",
-                        400: "#F38272",
-                        500: "#EC4C45",
-                        600: "#CA3238",
-                        700: "#A92233",
-                        800: "#88162E",
-                        900: "#710D2A",
-                        DEFAULT: "#EC4C45",
-                        foreground: "#ffffff",
-                    },
-                    focus: "#CA3238",
-
-                },
-                layout: {
-                    disabledOpacity: "0.3",
-                    radius: {
-                        small: "4px",
-                        medium: "6px",
-                        large: "8px",
-                    },
-                    borderWidth: {
-                        small: "1px",
-                        medium: "2px",
-                        large: "3px",
-                    },
-                },
-            },
-            "dark": {
-                extend: "dark",
-                colors: {
-                    background: "#121212",
-                    foreground: "#ffffff",
-                    primary: {
-                        100: "#C8F7E1",
-                        200: "#95EFCE",
-                        300: "#5AD0AF",
-                        400: "#2FA28C",
-                        500: "#06645B",
-                        600: "#045655",
-                        700: "#034248",
-                        800: "#01303A",
-                        900: "#012330",
-                        DEFAULT: "#06645B",
-                        foreground: "#ffffff",
-                    },
-                    focus: "#045655",
-                },
-                layout: {
-                    disabledOpacity: "0.3",
-                    radius: {
-                        small: "4px",
-                        medium: "6px",
-                        large: "8px",
-                    },
-                    borderWidth: {
-                        small: "1px",
-                        medium: "2px",
-                        large: "3px",
-                    },
-                },
-            },
-        },
-    }),],
+  },
+  darkMode: "class",
+  plugins: [
+    nextui({
+      themes: {},
+    }),
+  ],
 };
 export default config;
